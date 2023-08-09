@@ -16,13 +16,16 @@ typedef struct {
 } Recurso;
 
 // Definição da estrutura da nave espacial
-typedef struct {
+typedef struct NaveEspacial {
     int prioridade;
     Passageiro *passageiros;
     int numPassageiros;
     Recurso *recursos;
     int numRecursos;
+    int (*verificarDados)(struct NaveEspacial *nave);
 } NaveEspacial;
+
+int verificarDadosNave(NaveEspacial *nave);
 
 #endif
 

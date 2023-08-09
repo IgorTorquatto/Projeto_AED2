@@ -33,7 +33,20 @@ void inserir(Heap *heap, NaveEspacial nave) {
         return;
     }
 
+    int ajuste = nave.verificarDados(&nave); //Verifica os dados da nave
+
+    // Probabilidade de 10% para atribuir uma nova prioridade aleatória
+    if (rand() % 100 < 10) {
+        nave.prioridade = rand() % 10 + 1; // Gera um número aleatório entre 1 e 10
+        printf("Nova prioridade atribuída: %d\n", nave.prioridade);
+    }
+
     heap->array[heap->tamanho] = nave;
     heap->tamanho++;
     ajustarParaCima(heap, heap->tamanho - 1);
+
+    if (ajuste) {
+        printf("Nave ajustada na posição %d com prioridade %d.\n", heap->tamanho, nave.prioridade);
+    }
 }
+

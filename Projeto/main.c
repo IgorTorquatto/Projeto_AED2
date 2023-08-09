@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <locale.h>
 #include "naveEspacial.h"
 #include "heap.h"
 
 int main() {
+	setlocale(LC_ALL,"Portuguese"); // Para corrigir os problemas de acentuação 
+	 srand(time(NULL)); // Inicializa a semente do gerador de números aleatórios
     Heap *heap = criarHeap(10);
 
     // Exemplo de criação de uma nave espacial
@@ -17,7 +21,7 @@ int main() {
         {"Água", 50}
     };
 
-    NaveEspacial nave = {5, passageiros, 2, recursos, 2};
+    NaveEspacial nave = {15, passageiros, 2, recursos, 2, verificarDadosNave}; // função de verificação incluída
 
     inserir(heap, nave);
 
@@ -31,4 +35,3 @@ int main() {
 
     return 0;
 }
-
