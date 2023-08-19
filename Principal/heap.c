@@ -14,6 +14,7 @@ void trocar(NaveEspacial *a, NaveEspacial *b) {
     NaveEspacial temp = *a;
     *a = *b;
     *b = temp;
+    //Este comentário é um teste
 }
 
 
