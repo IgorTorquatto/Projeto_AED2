@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1692450059 source:c:\users\marce\onedrive\Área de trabalho\joão\programas\aed_2\projeto\projeto_marcelo\heap.c
+	"heap.h"
+
+1692450088 c:\users\marce\onedrive\Área de trabalho\joão\programas\aed_2\projeto\projeto_marcelo\heap.h
+	"naveEspacial.h"
+
+1692361212 c:\users\marce\onedrive\Área de trabalho\joão\programas\aed_2\projeto\projeto_marcelo\naveespacial.h
+
+1692361262 source:c:\users\marce\onedrive\Área de trabalho\joão\programas\aed_2\projeto\projeto_marcelo\naveespacial.c
+	<stdio.h>
+	"naveEspacial.h"
+
+1692450106 source:c:\users\marce\onedrive\Área de trabalho\joão\programas\aed_2\projeto\projeto_marcelo\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<locale.h>
+	"naveEspacial.h"
+	"heap.h"
+
