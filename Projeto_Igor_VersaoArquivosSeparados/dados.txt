@@ -1,0 +1,5 @@
+1 8 Nave1
+2 5 Nave2
+3 7 Nave3
+4 3 Nave4
+5 9 Nave5
