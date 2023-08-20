@@ -7,13 +7,14 @@
 
 int main() {
 	setlocale(LC_ALL,"Portuguese"); // Para corrigir os problemas de acentuação
-	 srand(time(NULL)); // Inicializa a semente do gerador de números aleatórios
+	srand(time(NULL)); // Inicializa a semente do gerador de números aleatórios
     Heap *heap = criarHeap(10);
     int *a;
 
     // Exemplo de criação de uma nave espacial
-    Passageiro passageiros[2] = {
-        {"Passageiro1", 30, "Terra", 1},
+    
+    Passageiro passageiros[2] = { //Quantidade de passageiros a ser criados
+        {"Passageiro1", 30, "Terra", 1}, //Preenchendo todos os atributos do scruct
         {"Passageiro2", 25, "Marte", 2}
     };
 
@@ -42,13 +43,16 @@ int main() {
         {"Tecido de algodao",30}
     };
 
-    NaveEspacial nave = {1,15, passageiros, 2, recursos, 2, verificarDadosNave}; // função de verificação incluída
+	//Criação das naves
+    NaveEspacial nave = {1,15, passageiros, 2, recursos, 2, verificarDadosNave}; // id,prioridade,passageiros,num_passageiro,recursos,num_recursos,função de verificação
     NaveEspacial espac = {2,7,familia,4,itens,4,verificarDadosNave};
     NaveEspacial nova = {3,9,familia,4,recursos,2,verificarDadosNave};
     NaveEspacial ult = {4,2,grupo,3,itens,4,verificarDadosNave};
     NaveEspacial uma = {5,7,grupo,3,recursos,4,verificarDadosNave};
     NaveEspacial ume = {6,-7,grupo,3,recursos,4,verificarDadosNave};
-
+    
+    
+	//Inserção das naves no heap
     inserirDesordenado(heap, nave);
     inserirDesordenado(heap, espac);
     inserirDesordenado(heap,ult);
@@ -56,19 +60,15 @@ int main() {
     inserirDesordenado(heap,uma);
     inserirDesordenado(heap,ume);
 
-    // Exibir informações da nave espacial inserida
-    /*printf("Nave na posição 1 - id: %d \n",heap->array[0].id);
-    printf("Prioridade: %d\n", heap->array[0].prioridade);
-    printf("Número de passageiros: %d\n", heap->array[0].numPassageiros);
-    printf("Número de recursos: %d\n", heap->array[0].numRecursos);
-    */
-
+    //Impressão
     imprimir(heap);
 
+    //Construção da heap
     constroiHeap(heap);
 
     imprimir(heap);
 
+	//Liberação
     free(heap->array);
     free(heap);
 

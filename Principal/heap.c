@@ -3,9 +3,9 @@
 // Função para criar uma nova heap
 Heap* criarHeap(int capacidade) {
     Heap *heap = (Heap*)malloc(sizeof(Heap));
-    heap->capacidade = capacidade;
-    heap->tamanho = 0;
-    heap->array = (NaveEspacial*)malloc(capacidade * sizeof(NaveEspacial));
+    heap->capacidade = capacidade; //queremos passara a capacidade da heap ao chamar a função
+    heap->tamanho = 0; // inicialmente o tamanho deve é 0
+    heap->array = (NaveEspacial*)malloc(capacidade * sizeof(NaveEspacial)); //alocando espaço para as naves
     return heap;
 }
 
