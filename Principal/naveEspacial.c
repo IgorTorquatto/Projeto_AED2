@@ -9,6 +9,6 @@ int verificarDadosNave(NaveEspacial *nave) {
         return 1; // Indica que a prioridade foi ajustada
     }
 
-    return 0; 
+    return 0; // Indica que a prioridade é válida
 }
 
