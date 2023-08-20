@@ -66,6 +66,13 @@ int main() {
     //Construção da heap
     constroiHeap(heap);
 
+	//Remoção das naves em ordem de prioridade
+	while (heap->tamanho > 0) {
+        NaveEspacial nave = heap->array[0];
+        printf("Nave %d saindo da fila com prioridade %d\n", nave.id, nave.prioridade);
+        remover(heap);
+    }
+
     imprimir(heap);
 
 	//Liberação
