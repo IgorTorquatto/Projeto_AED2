@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1693771978 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2\principal - copia\heap.c
+	"heap.h"
+	<stdio.h>
+	<stdlib.h>
+
+1693764782 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2\principal - copia\heap.h
+	"naveEspacial.h"
+
+1693764782 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2\principal - copia\naveespacial.h
+
+1693774231 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2\principal - copia\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"naveEspacial.h"
+	"heap.h"
+	<string.h>
+
+1693771506 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2\principal - copia\naveespacial.c
+	<stdio.h>
+	<stdlib.h>
+	"naveEspacial.h"
+
