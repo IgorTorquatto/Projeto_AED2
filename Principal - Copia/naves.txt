@@ -1,1 +1,0 @@
-1,15,Passageiro1,30,Terra,1,Comida,100,Água,50

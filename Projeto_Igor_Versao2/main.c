@@ -17,10 +17,16 @@ int inserirNaveDoArquivo(FILE *arquivo, Heap *heap) {
         strcpy(passageiros[0].planetaOrigem, planetaOrigem);
         passageiros[0].identificadorUnico = identificadorUnico;
 
-        Recurso recursos[10]; // Ajuste o tamanho do array conforme necessário
+        Recurso recursos[50];
         int numRecursos = 0;
 
-        while (fscanf(arquivo, "%49[^,],%d,", recursos[numRecursos].nomeRecurso, &recursos[numRecursos].quantidade) == 2) {
+        char recursoNome[50];
+        int quantidade;
+
+        // Leitura dos recursos separados por vírgulas
+        while (fscanf(arquivo, "%49[^,],%d,", recursoNome, &quantidade) == 2) {
+            strcpy(recursos[numRecursos].nomeRecurso, recursoNome);
+            recursos[numRecursos].quantidade = quantidade;
             numRecursos++;
         }
 
@@ -36,7 +42,6 @@ int main() {
     srand(time(NULL)); // Inicializa a semente do gerador de números aleatórios
     Heap *heap = criarHeap(10);
 
-    // Abra o arquivo de texto para leitura
     FILE *arquivo = fopen("naves.txt", "r");
     if (arquivo == NULL) {
         perror("Erro ao abrir o arquivo");
@@ -56,17 +61,17 @@ int main() {
     if (navesLidas > 0) {
         imprimir(heap);
 
-        // Construção da heap
-        constroiHeap(heap);
+    // Construção da heap
+    constroiHeap(heap);
 
-        // Remoção
-        while (heap->tamanho > 0) {
-            NaveEspacial nave = heap->array[0];
-            printf("Nave id %d saindo da fila com prioridade %d\n", nave.id, nave.prioridade);
-            remover(heap);
-        }
+    // Remoção
+    while (heap->tamanho > 0) {
+        NaveEspacial nave = heap->array[0];
+        printf("Nave id %d saindo da fila com prioridade %d\n", nave.id, nave.prioridade);
+        remover(heap);
+    }
     } else {
-        printf("Nenhuma nave foi lida do arquivo.\n");
+    printf("Nenhuma nave foi lida do arquivo.\n");
     }
 
     // Liberação
