@@ -4,3 +4,5 @@ naveEspacial.o
 Makefile.win
 Project.exe
 Project.layout
+Project.cbp
+Project.depend

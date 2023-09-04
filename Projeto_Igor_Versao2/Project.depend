@@ -22,3 +22,26 @@
 	<stdlib.h>
 	"naveEspacial.h"
 
+1693831445 source:c:\users\softex\documents\projeto_aed2\projeto_igor_versao2\heap.c
+	"heap.h"
+	<stdio.h>
+	<stdlib.h>
+
+1693831445 c:\users\softex\documents\projeto_aed2\projeto_igor_versao2\heap.h
+	"naveEspacial.h"
+
+1693831445 c:\users\softex\documents\projeto_aed2\projeto_igor_versao2\naveespacial.h
+
+1693834492 source:c:\users\softex\documents\projeto_aed2\projeto_igor_versao2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"naveEspacial.h"
+	"heap.h"
+	<string.h>
+
+1693831445 source:c:\users\softex\documents\projeto_aed2\projeto_igor_versao2\naveespacial.c
+	<stdio.h>
+	<stdlib.h>
+	"naveEspacial.h"
+
