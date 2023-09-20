@@ -1,0 +1,63 @@
+# depslib dependency file v1.0
+1695234428 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\nova pasta\projeto\hash.c
+	<stdio.h>
+	<stdlib.h>
+	"hash.h"
+
+1695234448 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\nova pasta\projeto\hash.h
+
+1695234367 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\nova pasta\projeto\heap.c
+	"heap.h"
+	<stdio.h>
+	<stdlib.h>
+
+1695234403 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\nova pasta\projeto\heap.h
+	"naveEspacial.h"
+
+1695234504 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\nova pasta\projeto\naveespacial.h
+
+1695234289 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\nova pasta\projeto\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"naveEspacial.h"
+	"heap.h"
+	"hash.h"
+	<string.h>
+
+1695234477 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\nova pasta\projeto\naveespacial.c
+	<stdio.h>
+	<stdlib.h>
+	"naveEspacial.h"
+
+1695234428 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\hash.c
+	<stdio.h>
+	<stdlib.h>
+	"hash.h"
+
+1695234448 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\hash.h
+
+1695234367 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\heap.c
+	"heap.h"
+	<stdio.h>
+	<stdlib.h>
+
+1695234403 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\heap.h
+	"naveEspacial.h"
+
+1695234504 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\naveespacial.h
+
+1695234289 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"naveEspacial.h"
+	"heap.h"
+	"hash.h"
+	<string.h>
+
+1695234477 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\naveespacial.c
+	<stdio.h>
+	<stdlib.h>
+	"naveEspacial.h"
+
