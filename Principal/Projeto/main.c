@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <unistd.h>
 #include "naveEspacial.h"
 #include "heap.h"
 #include "hash.h"
@@ -8,7 +9,7 @@
 #define NUM_RECURSOS 5
 
 
-// Fun��o para ler e inserir todas as naves do arquivo
+// Função para ler e inserir todas as naves do arquivo
 int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
     int navesInseridas = 0;
     char* nomesRecursos[NUM_RECURSOS] = {"Agua", "Gasolina", "Comida","Remedios", "Itens"};
@@ -45,7 +46,7 @@ int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
             inserir(heap, nave);
             navesInseridas++;
         } else {
-            return 0; // Encerra o loop se n�o for poss�vel ler mais naves
+            return 0; // Encerra o loop se não for possível ler mais naves
         }
     }
 
@@ -53,10 +54,9 @@ int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
 }
 
 
-
 int main() {
-    setlocale(LC_ALL, "Portuguese"); // Para corrigir os problemas de acentua��o
-    srand(time(NULL)); // Inicializa a semente do gerador de n�meros aleat�rios
+    setlocale(LC_ALL, "Portuguese");
+    srand(time(NULL)); // Inicializa a semente do gerador de números aleatórios
     Heap *heap = criarHeap(10);
 
     FILE *arquivo = fopen("naves.txt", "r");
@@ -66,43 +66,29 @@ int main() {
     }
 
     int navesLidas=0;
-    RecursoCombination novaComb;
-
-    // Leitura e inser��o das naves a partir do arquivo
+    // Leitura e inserção das naves a partir do arquivo
     while (inserirTodasNavesDoArquivo(arquivo, heap)) {
         navesLidas++;
-
-        /* Calcula a combina��o dos recursos da nova nave e insere na tabela de dispers�o
-        int idRecursosNave[3]; // Suponha que voc� tem os IDs dos recursos da nova nave
-        novaComb.recursos[0] = idRecursosNave[0];
-        novaComb.recursos[1] = idRecursosNave[1];
-        novaComb.recursos[2] = idRecursosNave[2];
-        inserirCombinacaoUnica(&novaComb);
-
-        // Verifica a expans�o com base na nova combina��o
-        verificarExpansao(&novaComb);*/
     }
-
     fclose(arquivo);
 
-    // Impress�o
-    if (navesLidas > 0) {
-        imprimir(heap);
-
-    // Constru��o da heap
     constroiHeap(heap);
 
-    // Remo��o
-    while (heap->tamanho > 0) {
-        NaveEspacial nave = heap->array[0];
-        printf("Nave id %d saindo da fila com prioridade %d\n", nave.id, nave.prioridade);
-        remover(heap);
-    }
-    } else {
+    // Impressão
+    if (navesLidas > 0) {
+    imprimir(heap);} else {
     printf("Nenhuma nave foi lida do arquivo.\n");
     }
 
-    // Libera��o
+    //Remoção
+    while (heap->tamanho > 0) {
+        NaveEspacial nave = heap->array[0];
+        printf("\nNave id %d saindo da fila com prioridade %d\n", nave.id, nave.prioridade);
+        sleep(3);
+        remover(heap); //diminui o tamanho do heap
+    }
+
+    // Liberação de memória
     free(heap->array);
     free(heap);
 

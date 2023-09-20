@@ -37,26 +37,29 @@
 
 1695234448 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\hash.h
 
-1695234367 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\heap.c
+1695244473 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\heap.c
 	"heap.h"
+	<locale.h>
 	<stdio.h>
+	<unistd.h>
 	<stdlib.h>
 
-1695234403 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\heap.h
+1695243740 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\heap.h
 	"naveEspacial.h"
 
-1695234504 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\naveespacial.h
+1695235493 c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\naveespacial.h
 
-1695234289 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\main.c
+1695243808 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\main.c
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
+	<unistd.h>
 	"naveEspacial.h"
 	"heap.h"
 	"hash.h"
 	<string.h>
 
-1695234477 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\naveespacial.c
+1695235386 source:c:\users\cicer\onedrive\documentos\disciplinas ufca pessoal\projeto_aed2-1\principal\projeto\naveespacial.c
 	<stdio.h>
 	<stdlib.h>
 	"naveEspacial.h"

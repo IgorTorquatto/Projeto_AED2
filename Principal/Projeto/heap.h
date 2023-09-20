@@ -1,9 +1,8 @@
-
 #ifndef HEAP_H
 #define HEAP_H
 #include "naveEspacial.h"
 
-// Defini��o da estrutura da heap
+// Definição da estrutura da heap
 typedef struct {
     NaveEspacial *array;
     int capacidade;
@@ -20,4 +19,3 @@ void inserirDesordenado(Heap *heap,NaveEspacial nave);
 void constroiHeap(Heap *heap);
 
 #endif
-
