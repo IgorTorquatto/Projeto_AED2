@@ -71,8 +71,10 @@ void imprimir(Heap *heap) {
         printf("Prioridade: %d\n", heap->array[i].prioridade);
         printf("Número de passageiros: %d\n", heap->array[i].numPassageiros);
         printf("Número de recursos: %d\n", heap->array[i].numRecursos);
+        printf("-------------------------------------\n");
         i++;
     }
+    printf("-------------------------------------\n");
     printf("A heap tem no total (%d) naves\n",heap->tamanho);
     printf("-------------------------------------\n");
 }

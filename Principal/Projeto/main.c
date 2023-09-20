@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include "naveEspacial.h"
 #include "heap.h"
-#include "hash.h"
 #include <string.h>
 #define NUM_RECURSOS 5
 
@@ -84,6 +83,7 @@ int main() {
     while (heap->tamanho > 0) {
         NaveEspacial nave = heap->array[0];
         printf("\nNave id %d saindo da fila com prioridade %d\n", nave.id, nave.prioridade);
+        printf("%s",heap->array);
         sleep(3);
         remover(heap); //diminui o tamanho do heap
     }
