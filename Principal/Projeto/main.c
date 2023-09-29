@@ -5,43 +5,41 @@
 #include "naveEspacial.h"
 #include "heap.h"
 #include <string.h>
-#define NUM_RECURSOS 5
+#define NUM_RECURSOS 6
 
 
-// Função para ler e inserir todas as naves do arquivo
 int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
     int navesInseridas = 0;
-    char* nomesRecursos[NUM_RECURSOS] = {"Agua", "Gasolina", "Comida","Remedios", "Itens"};
+    char* nomesRecursos[NUM_RECURSOS] = {"Agua", "Gasolina", "Comida","Remedios", "Armas","Roupa"};  //6 itens conforme a descrição do trabalho
     char linha[256]; // Tamanho suficiente para armazenar uma linha
 
     while (fgets(linha, sizeof(linha), arquivo) != NULL) {
-        int id, prioridade, idade, identificadorUnico,num_passageiros;
+        int id, prioridade, idade, identificadorUnico, num_passageiros;
         char nome[50], planetaOrigem[50];
 
         if (sscanf(linha, "%d,%d,%49[^,],%d,%49[^,],%d,", &id, &prioridade, nome, &idade, planetaOrigem, &identificadorUnico) == 6) {
-            Passageiro passageiros[1];
-            passageiros[0].idade = idade;
-            strcpy(passageiros[0].nome, nome);
-            strcpy(passageiros[0].planetaOrigem, planetaOrigem);
-            passageiros[0].identificadorUnico = identificadorUnico;
+            Passageiro piloto[1];
+            piloto[0].idade = idade;
+            strcpy(piloto[0].nome, nome);
+            strcpy(piloto[0].planetaOrigem, planetaOrigem);
+            piloto[0].identificadorUnico = identificadorUnico;
 
-            //Qtd passageiros
-            num_passageiros = rand();
-            num_passageiros = num_passageiros %101;
+            // Qtd passageiros
+            num_passageiros = rand() % 101;
 
-            //Qtd Recursos
+            // Qtd Recursos
             Recurso recursos[1];
-            int numRecursos = rand();
-            numRecursos = numRecursos % 101;
-
-            //Nome do Recurso
-            int num_aleatorio = rand();
-            num_aleatorio = num_aleatorio % 6;
-
-            strcpy(recursos[0].nomeRecurso, nomesRecursos[num_aleatorio]);
+            int numRecursos = rand() % 101;
             recursos[0].quantidade = numRecursos;
 
-            NaveEspacial nave = {id, prioridade, passageiros, num_passageiros, recursos, numRecursos, verificarDadosNave};
+            // Nome do Recurso
+            int num_aleatorio = rand() % 6;
+            strcpy(recursos[0].nomeRecurso, nomesRecursos[num_aleatorio]);
+
+            NaveEspacial nave = {id, prioridade, piloto, num_passageiros, recursos, numRecursos, verificarDadosNave};
+            printf("Nave de id (%d) transportando: %s \n",id,nave.recursos->nomeRecurso);
+            printf("Piloto da nave de id (%d): %s do planeta %s \n\n",id,nave.passageiros->nome,nave.passageiros->planetaOrigem);
+
             inserir(heap, nave);
             navesInseridas++;
         } else {
@@ -65,12 +63,14 @@ int main() {
     }
 
     int navesLidas=0;
-    // Leitura e inserção das naves a partir do arquivo
+
+    // Leitura e inserção das naves a partir do arquivo na heap criada
     while (inserirTodasNavesDoArquivo(arquivo, heap)) {
         navesLidas++;
     }
     fclose(arquivo);
 
+    //Construção da heap de acordo com suas condições
     constroiHeap(heap);
 
     // Impressão

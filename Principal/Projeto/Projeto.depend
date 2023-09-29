@@ -63,3 +63,36 @@
 	<stdlib.h>
 	"naveEspacial.h"
 
+1696018417 source:c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\hash.c
+	<stdio.h>
+	<stdlib.h>
+	"hash.h"
+
+1696018417 c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\hash.h
+
+1696023546 source:c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\heap.c
+	"heap.h"
+	<locale.h>
+	<stdio.h>
+	<unistd.h>
+	<stdlib.h>
+
+1696018417 c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\heap.h
+	"naveEspacial.h"
+
+1696018417 c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\naveespacial.h
+
+1696023940 source:c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<unistd.h>
+	"naveEspacial.h"
+	"heap.h"
+	<string.h>
+
+1696019645 source:c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\naveespacial.c
+	<stdio.h>
+	<stdlib.h>
+	"naveEspacial.h"
+

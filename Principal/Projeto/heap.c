@@ -35,7 +35,7 @@ void ajustarParaCima(Heap *heap, int indice) {
 // Função para inserir uma nave espacial na heap
 void inserir(Heap *heap, NaveEspacial nave) {
     if (heap->tamanho == heap->capacidade) {
-        printf("A heap está cheia\n");
+        printf("A heap esta cheia\n");
         return;
     }
 
@@ -44,7 +44,7 @@ void inserir(Heap *heap, NaveEspacial nave) {
     // Probabilidade de 10% para atribuir uma nova prioridade aleatória para qualquer nave
     if (rand() % 100 < 10) {
         nave.prioridade = rand() % 10 + 1; // Gera um número aleatório entre 1 e 10
-        printf("Nova prioridade atribuída!, nave de id %d mudou prioridade para : %d \n",nave.id, nave.prioridade);
+        printf("Nova prioridade atribuida!, nave de id %d mudou prioridade para : %d \n",nave.id, nave.prioridade);
         printf("\n");
     }
 
@@ -65,12 +65,13 @@ void imprimir(Heap *heap) {
     setlocale(LC_ALL, "Portuguese");
     int i= 0;
 
-    printf("Dados das naves:\n\n");
+    printf("\nDados das naves:\n\n");
     while (i < heap->tamanho) {
-        printf("Nave na posição %d(id:%d)\n", i + 1, heap->array[i].id);
+        printf("Nave na posicao %d(id:%d)\n", i + 1, heap->array[i].id);
         printf("Prioridade: %d\n", heap->array[i].prioridade);
-        printf("Número de passageiros: %d\n", heap->array[i].numPassageiros);
-        printf("Número de recursos: %d\n", heap->array[i].numRecursos);
+        printf("Numero de passageiros: %d\n", heap->array[i].numPassageiros);
+        printf("Numero de recursos: %d\n", heap->array[i].numRecursos);
+        //printf("Recurso transportado: %s \n",heap->array[i].recursos[0].nomeRecurso);
         printf("-------------------------------------\n");
         i++;
     }
@@ -102,7 +103,7 @@ void descer(Heap *heap, int indice) {
 
 void remover(Heap *heap){
     if (heap->tamanho == 0) {
-        printf("A heap está vazia\n");
+        printf("A heap esta vazia\n");
         return;
     }
     //Copiamos o último elemento para primeira posição e aplicamos o descer
