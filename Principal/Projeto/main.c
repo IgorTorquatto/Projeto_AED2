@@ -18,6 +18,7 @@ int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
         char nome[50], planetaOrigem[50];
 
         if (sscanf(linha, "%d,%d,%49[^,],%d,%49[^,],%d,", &id, &prioridade, nome, &idade, planetaOrigem, &identificadorUnico) == 6) {
+
             Passageiro piloto[1];
             piloto[0].idade = idade;
             strcpy(piloto[0].nome, nome);
@@ -62,20 +63,17 @@ int main() {
         return 1;
     }
 
-    int navesLidas=0;
-
     // Leitura e inserção das naves a partir do arquivo na heap criada
-    while (inserirTodasNavesDoArquivo(arquivo, heap)) {
-        navesLidas++;
-    }
+    int navesLidas=inserirTodasNavesDoArquivo(arquivo, heap);
     fclose(arquivo);
 
     //Construção da heap de acordo com suas condições
     constroiHeap(heap);
 
     // Impressão
-    if (navesLidas > 0) {
-    imprimir(heap);} else {
+   if (navesLidas > 0) {
+    imprimir(heap);
+    } else {
     printf("Nenhuma nave foi lida do arquivo.\n");
     }
 
@@ -83,7 +81,6 @@ int main() {
     while (heap->tamanho > 0) {
         NaveEspacial nave = heap->array[0];
         printf("\nNave id %d saindo da fila com prioridade %d\n", nave.id, nave.prioridade);
-        printf("%s",heap->array);
         sleep(3);
         remover(heap); //diminui o tamanho do heap
     }

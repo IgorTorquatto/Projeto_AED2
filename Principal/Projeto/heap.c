@@ -62,22 +62,23 @@ void inserir(Heap *heap, NaveEspacial nave) {
 
 void imprimir(Heap *heap) {
 
-    setlocale(LC_ALL, "Portuguese");
     int i= 0;
 
+    printf("-------------------------------------\n");
+    printf("A heap tem no total (%d) naves\n",heap->tamanho);
+    printf("-------------------------------------\n");
+
     printf("\nDados das naves:\n\n");
+
     while (i < heap->tamanho) {
         printf("Nave na posicao %d(id:%d)\n", i + 1, heap->array[i].id);
         printf("Prioridade: %d\n", heap->array[i].prioridade);
         printf("Numero de passageiros: %d\n", heap->array[i].numPassageiros);
         printf("Numero de recursos: %d\n", heap->array[i].numRecursos);
-        //printf("Recurso transportado: %s \n",heap->array[i].recursos[0].nomeRecurso);
         printf("-------------------------------------\n");
         i++;
     }
-    printf("-------------------------------------\n");
-    printf("A heap tem no total (%d) naves\n",heap->tamanho);
-    printf("-------------------------------------\n");
+
 }
 
 
