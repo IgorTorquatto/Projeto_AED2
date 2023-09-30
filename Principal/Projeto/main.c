@@ -5,9 +5,11 @@
 #include "naveEspacial.h"
 #include "heap.h"
 
-
 int main() {
     setlocale(LC_ALL, "Portuguese");
+    int i;
+
+    //Heap:
     Heap *heap = criarHeap(10);
 
     FILE *arquivo = fopen("naves.txt", "r");
@@ -40,7 +42,6 @@ int main() {
     //Remoção
     while (heap->tamanho > 0) {
         NaveEspacial nave = heap->array[0];
-        //printf("NAVE    %d",heap->array[0].id);
         printf("\nNave id %d saindo da fila com prioridade %d\n", nave.id, nave.prioridade);
         sleep(3);
         remover(heap); //diminui o tamanho do heap

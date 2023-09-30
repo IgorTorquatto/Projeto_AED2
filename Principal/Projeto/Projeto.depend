@@ -63,14 +63,24 @@
 	<stdlib.h>
 	"naveEspacial.h"
 
-1696018417 source:c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\hash.c
+1696116413 source:c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\hash.c
 	<stdio.h>
 	<stdlib.h>
+	<locale.h>
+	<unistd.h>
+	"naveEspacial.h"
+	"heap.h"
 	"hash.h"
 
-1696018417 c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\hash.h
+1696116658 c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\hash.h
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<unistd.h>
+	"naveEspacial.h"
+	"heap.h"
 
-1696100562 source:c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\heap.c
+1696115127 source:c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\heap.c
 	"heap.h"
 	<locale.h>
 	<stdio.h>
@@ -87,13 +97,14 @@
 
 1696018417 c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\naveespacial.h
 
-1696100688 source:c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\main.c
+1696116514 source:c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\main.c
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
 	<unistd.h>
 	"naveEspacial.h"
 	"heap.h"
+	"hash.h"
 
 1696019645 source:c:\users\cicer\downloads\aed2\projeto\projeto_aed2\principal\projeto\naveespacial.c
 	<stdio.h>

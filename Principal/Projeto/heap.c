@@ -46,7 +46,7 @@ void inserir(Heap *heap, NaveEspacial nave) {
     // Probabilidade de 10% para atribuir uma nova prioridade aleatória para qualquer nave
     if (rand() % 100 < 10) {
         nave.prioridade = rand() % 10 + 1; // Gera um número aleatório entre 1 e 10
-        printf("Nova prioridade atribuida!, nave de id %d mudou prioridade para : %d \n",nave.id, nave.prioridade);
+        printf("Nova prioridade atribuida! Nave de id %d mudou prioridade para : %d \n",nave.id, nave.prioridade);
         printf("\n");
     }
 
@@ -64,7 +64,7 @@ void inserir(Heap *heap, NaveEspacial nave) {
 
 void imprimir(Heap *heap) {
 
-    int i= 0;
+    int i,j= 0;
 
     printf("-------------------------------------\n");
     printf("A heap tem no total (%d) naves\n",heap->tamanho);
@@ -80,6 +80,7 @@ void imprimir(Heap *heap) {
         printf("Prioridade: %d\n", heap->array[i].prioridade);
         printf("Numero de passageiros: %d\n", heap->array[i].numPassageiros);
         printf("Numero de recursos: %d\n", heap->array[i].numRecursos);
+       // printf("Recurso nave %s",heap->array[i]->recursos->nomeRecurso);
         printf("-------------------------------------\n");
         i++;
     }
