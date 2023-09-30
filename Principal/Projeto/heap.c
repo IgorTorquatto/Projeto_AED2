@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
+#define NUM_RECURSOS 6
 
 // Função para criar uma nova heap
 Heap* criarHeap(int capacidade) {
@@ -54,7 +56,7 @@ void inserir(Heap *heap, NaveEspacial nave) {
 
     //Caso a prioridade precisou ser ajustada , no caso de ser menor do que 1 por exemplo, mostramos qual posição a prioridade foi ajustada
     if (ajuste) {
-        printf("Nave ajustada na posição %d com prioridade %d.\n", heap->tamanho, nave.prioridade);
+        printf("Nave ajustada na posiçao %d com prioridade %d.\n", heap->tamanho, nave.prioridade);
         printf("\n");
     }
 }
@@ -68,7 +70,10 @@ void imprimir(Heap *heap) {
     printf("A heap tem no total (%d) naves\n",heap->tamanho);
     printf("-------------------------------------\n");
 
+    sleep(5);
+
     printf("\nDados das naves:\n\n");
+    sleep(5);
 
     while (i < heap->tamanho) {
         printf("Nave na posicao %d(id:%d)\n", i + 1, heap->array[i].id);
@@ -120,3 +125,48 @@ void constroiHeap(Heap *heap) {
         descer(heap, i);
     }
 }
+
+
+int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
+    int navesInseridas = 0;
+    char* nomesRecursos[NUM_RECURSOS] = {"Agua", "Gasolina", "Comida","Remedios", "Armas","Roupa"};  //6 itens conforme a descrição do trabalho
+    char linha[256]; // Tamanho suficiente para armazenar uma linha
+
+    while (fgets(linha, sizeof(linha), arquivo) != NULL) {
+        int id, prioridade, idade, identificadorUnico, num_passageiros;
+        char nome[50], planetaOrigem[50];
+
+        if (sscanf(linha, "%d,%d,%49[^,],%d,%49[^,],%d", &id, &prioridade, nome, &idade, planetaOrigem, &identificadorUnico) == 6) {
+
+            Passageiro piloto[1];
+            piloto[0].idade = idade;
+            strcpy(piloto[0].nome, nome);
+            strcpy(piloto[0].planetaOrigem, planetaOrigem);
+            piloto[0].identificadorUnico = identificadorUnico;
+
+            // Qtd passageiros
+            num_passageiros = rand() % 101;
+
+            // Qtd Recursos
+            Recurso recursos[1];
+            int numRecursos = rand() % 101;
+            recursos[0].quantidade = numRecursos;
+
+            // Nome do Recurso
+            int num_aleatorio = rand() % 6;
+            strcpy(recursos[0].nomeRecurso, nomesRecursos[num_aleatorio]);
+
+            NaveEspacial nave = {id, prioridade, piloto, num_passageiros, recursos, numRecursos, verificarDadosNave};
+
+            printf("Nave de id (%d) transportando: %s \n",id,nave.recursos->nomeRecurso);
+            printf("Piloto da nave de id (%d): %s do planeta %s \n\n",id,nave.passageiros->nome,nave.passageiros->planetaOrigem);
+
+            inserir(heap, nave);
+            navesInseridas++;
+            sleep(2);
+        }
+    }
+
+    return navesInseridas;
+}
+
