@@ -64,7 +64,7 @@ void inserir(Heap *heap, NaveEspacial nave) {
 
 void imprimir(Heap *heap) {
 
-    int i,j= 0;
+    int i=0;
 
     printf("-------------------------------------\n");
     printf("A heap tem no total (%d) naves\n",heap->tamanho);

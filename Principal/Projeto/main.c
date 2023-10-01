@@ -6,8 +6,6 @@
 #include "heap.h"
 
 int main() {
-    setlocale(LC_ALL, "Portuguese");
-    int i;
 
     //Heap:
     Heap *heap = criarHeap(10);
