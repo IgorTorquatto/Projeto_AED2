@@ -26,6 +26,12 @@ typedef struct NaveEspacial {
     int (*verificarDados)(struct NaveEspacial *nave);
 } NaveEspacial;
 
+typedef struct {
+    char permutacao[6][50];
+} Permutacao;
+
+
 int verificarDadosNave(NaveEspacial *nave);
+int sao_permutacoes_iguais(Permutacao p1, Permutacao p2);
 
 #endif

@@ -1,5 +1,5 @@
 #include "heap.h"
-#include <locale.h>
+#include "naveEspacial.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -128,7 +128,7 @@ void constroiHeap(Heap *heap) {
 }
 
 
-int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
+int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap, Permutacao permutacoes[], int *contador_permutacoes){
     int navesInseridas = 0;
     char* nomesRecursos[NUM_RECURSOS] = {"Agua", "Gasolina", "Comida","Remedios", "Armas","Roupa"};  //6 itens conforme a descrição do trabalho
     char linha[256]; // Tamanho suficiente para armazenar uma linha
@@ -161,7 +161,37 @@ int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
 
             printf("Nave de id (%d) transportando: %s \n",id,nave.recursos->nomeRecurso);
             printf("Piloto da nave de id (%d): %s do planeta %s \n\n",id,nave.passageiros->nome,nave.passageiros->planetaOrigem);
+            //
 
+
+             // Verificar se as permutações de recursos são novas
+            int permutacao_nova = 1;
+            int i;
+            Permutacao permutacao_atual;
+
+            // Preenchendo permutacao_atual com as permutações dos recursos da nave
+
+            for (i = 0; i < *contador_permutacoes; i++) {
+                if (sao_permutacoes_iguais(permutacao_atual, permutacoes[i])) {
+                    permutacao_nova = 0;
+                    break;
+                }
+            }
+
+            if (permutacao_nova) {
+                // Nova permutação encontrada
+                // Adicionando ao conjunto de permutações únicas
+                if (*contador_permutacoes < 6 * 6 * 6) {
+                    memcpy(permutacoes[*contador_permutacoes].permutacao, permutacao_atual.permutacao, sizeof(permutacao_atual.permutacao));
+                    (*contador_permutacoes)++;
+                }
+
+                navesInseridas++;
+                sleep(2);
+            }
+
+
+            //
             inserir(heap, nave);
             navesInseridas++;
             sleep(2);

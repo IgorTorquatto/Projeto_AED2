@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 #include <unistd.h>
 #include "naveEspacial.h"
 #include "heap.h"
+#define MAX_PERMUTACOES (216)
 
 int main() {
+
+    //permutacoes:
+    Permutacao permutacoes[MAX_PERMUTACOES];
+    int contador_permutacoes = 0;
 
     //Heap:
     Heap *heap = criarHeap(10);
@@ -17,7 +21,7 @@ int main() {
     }
 
     // Leitura e inserção das naves a partir do arquivo na heap criada
-    int navesInseridas = inserirTodasNavesDoArquivo(arquivo, heap);
+    int navesInseridas = inserirTodasNavesDoArquivo(arquivo, heap, permutacoes, &contador_permutacoes);
     fclose(arquivo);
 
     printf("Carregando informacoes das naves ...\n");
@@ -31,6 +35,13 @@ int main() {
         imprimir(heap);
     } else{
         printf("Nenhuma nave foi inserida. \n");
+    }
+
+    if (navesInseridas >= 10) {
+    // Expandir a abertura
+    printf("Expansao da abertura!\n");
+    navesInseridas = 0;
+    contador_permutacoes = 0; // Limpar permutações
     }
 
     sleep(5);

@@ -21,6 +21,6 @@ void imprimir(Heap *heap);
 void descer(Heap *heap,int indice);
 void inserirDesordenado(Heap *heap,NaveEspacial nave);
 void constroiHeap(Heap *heap);
-int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap);
+int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap, Permutacao permutacoes[], int *contador_permutacoes);
 
 #endif
