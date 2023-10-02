@@ -1,8 +1,0 @@
-geral: Este cenário parece envolver um sistema de gerenciamento complexo, onde as naves espaciais são organizadas com base em suas prioridades, e a passagem entre galáxias é expandida de acordo com as condições específicas de recursos nas naves. Essas expansões permitem um fluxo mais eficiente de recursos e populações entre as galáxias. É um cenário interessante que combina elementos de ficção científica com conceitos de gerenciamento e alocação de recursos.
-parte1: Essa estrutura de dados é usada para implementar a heap que é usada para armazenar as naves espaciais lidas a partir do arquivo "naves.txt" no código que você compartilhou. A estrutura Heap é uma parte fundamental do algoritmo de priorização e remoção das naves com base em sua prioridade.
-parte 2: Essa abordagem permite que a abertura da passagem seja mais eficiente, aproveitando ao máximo a variedade de alocações possíveis dos recursos nos compartimentos das naves espaciais. Assim, a passagem pode acomodar um número maior de naves e recursos, facilitando a movimentação entre as galáxias.
-Essa abordagem permite que a abertura da passagem seja mais eficiente, aproveitando ao máximo a variedade de alocações possíveis dos recursos nos compartimentos das naves espaciais. Assim, a passagem pode acomodar um número maior de naves e recursos, facilitando a movimentação entre as galáxias.
-
-modificações: Após essa integração, seu código deve ser capaz de monitorar as naves e detectar a próxima expansão com base nas combinações de recursos. Certifique-se de testar e ajustar as funções conforme necessário para garantir que a lógica funcione de acordo com os requisitos do seu sistema.
-
-Ordem parametros txt: id,prioridade,passageiro_nome,idade,planetadeorigem,id_passageiro,recurso_nome,recurso_qtd
