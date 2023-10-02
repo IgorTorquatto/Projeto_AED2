@@ -164,7 +164,8 @@ int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap, Permutacao permutacoes
             //
 
 
-             // Verificar se as permutações de recursos são novas
+             //começo
+            // Verificar se as permutações de recursos são novas
             int permutacao_nova = 1;
             int i;
             Permutacao permutacao_atual;
@@ -189,9 +190,10 @@ int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap, Permutacao permutacoes
                 navesInseridas++;
                 sleep(2);
             }
+            /*Essa parte do código verifica se a permutação de recursos da nave atual já existe no conjunto de permutações únicas e, se não existir, a adiciona ao conjunto.
+             Isso permite rastrear permutações únicas de recursos conforme as naves são inseridas.*/
 
-
-            //
+            //fim
             inserir(heap, nave);
             navesInseridas++;
             sleep(2);

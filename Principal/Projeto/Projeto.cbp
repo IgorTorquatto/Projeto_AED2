@@ -31,10 +31,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="hash.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="hash.h" />
 		<Unit filename="heap.c">
 			<Option compilerVar="CC" />
 		</Unit>

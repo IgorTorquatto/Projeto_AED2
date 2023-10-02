@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include "naveEspacial.h"
 #include "heap.h"
-#define MAX_PERMUTACOES (216)
+#define MAX_PERMUTACOES (216) // 6*6*6
 
 int main() {
 
@@ -37,7 +37,7 @@ int main() {
         printf("Nenhuma nave foi inserida. \n");
     }
 
-    if (navesInseridas >= 10) {
+    if (navesInseridas >= 10) { // > tamanhoDaHeap
     // Expandir a abertura
     printf("Expansao da abertura!\n");
     navesInseridas = 0;

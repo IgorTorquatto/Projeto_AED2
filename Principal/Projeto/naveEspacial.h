@@ -27,7 +27,7 @@ typedef struct NaveEspacial {
 } NaveEspacial;
 
 typedef struct {
-    char permutacao[6][50];
+    char permutacao[6][50]; //Armazenar até 6 permutações únicas de recursos, e cada permutação pode ter um nome de recurso com até 50 caracteres de comprimento.
 } Permutacao;
 
 
