@@ -13,6 +13,7 @@ typedef struct {
     int tamanho;
 } Heap;
 
+
 Heap* criarHeap(int capacidade);
 void inserir(Heap *heap, NaveEspacial nave);
 void trocar(NaveEspacial *a, NaveEspacial *b);
@@ -21,6 +22,6 @@ void imprimir(Heap *heap);
 void descer(Heap *heap,int indice);
 void inserirDesordenado(Heap *heap,NaveEspacial nave);
 void constroiHeap(Heap *heap);
-int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap, Permutacao permutacoes[], int *contador_permutacoes);
+int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap);
 
 #endif

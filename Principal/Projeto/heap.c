@@ -80,7 +80,6 @@ void imprimir(Heap *heap) {
         printf("Prioridade: %d\n", heap->array[i].prioridade);
         printf("Numero de passageiros: %d\n", heap->array[i].numPassageiros);
         printf("Numero de recursos: %d\n", heap->array[i].numRecursos);
-       // printf("Recurso nave %s",heap->array[i]->recursos->nomeRecurso);
         printf("-------------------------------------\n");
         i++;
     }
@@ -128,10 +127,16 @@ void constroiHeap(Heap *heap) {
 }
 
 
-int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap, Permutacao permutacoes[], int *contador_permutacoes){
+int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap){
     int navesInseridas = 0;
     char* nomesRecursos[NUM_RECURSOS] = {"Agua", "Gasolina", "Comida","Remedios", "Armas","Roupa"};  //6 itens conforme a descrição do trabalho
     char linha[256]; // Tamanho suficiente para armazenar uma linha
+
+    //Começo - Parte II
+    RecursosIguais recursosComuns;
+    recursosComuns.numRecursosComuns = 0;
+    recursosComuns.numNavesComRecursosIguais = 0;
+    //Fim - Parte II
 
     while (fgets(linha, sizeof(linha), arquivo) != NULL) {
         int id, prioridade, idade, identificadorUnico, num_passageiros;
@@ -155,50 +160,45 @@ int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap, Permutacao permutacoes
 
             // Nome do Recurso
             int num_aleatorio = rand() % 6;
-            strcpy(recursos[0].nomeRecurso, nomesRecursos[num_aleatorio]);
+            char nomeDoRecurso[50];
+            strcpy(nomeDoRecurso, nomesRecursos[num_aleatorio]);
+            strcpy(recursos[0].nomeRecurso, nomeDoRecurso);
 
             NaveEspacial nave = {id, prioridade, piloto, num_passageiros, recursos, numRecursos, verificarDadosNave};
 
             printf("Nave de id (%d) transportando: %s \n",id,nave.recursos->nomeRecurso);
             printf("Piloto da nave de id (%d): %s do planeta %s \n\n",id,nave.passageiros->nome,nave.passageiros->planetaOrigem);
-            //
 
 
-             //começo
-            // Verificar se as permutações de recursos são novas
-            int permutacao_nova = 1;
-            int i;
-            Permutacao permutacao_atual;
-
-            // Preenchendo permutacao_atual com as permutações dos recursos da nave
-
-            for (i = 0; i < *contador_permutacoes; i++) {
-                if (sao_permutacoes_iguais(permutacao_atual, permutacoes[i])) {
-                    permutacao_nova = 0;
+            //Começo - Parte II
+            // Verifique se esta nave transporta recursos comuns com outras naves
+            for (int j = 0; j < recursosComuns.numRecursosComuns; j++) {
+                if (strcmp(nomeDoRecurso, recursosComuns.recursosComuns[j]) == 0) {
+                    recursosComuns.navesComRecursosIguais[recursosComuns.numNavesComRecursosIguais] = id;
+                    recursosComuns.nomesRecursosComuns[recursosComuns.numNavesComRecursosIguais] = nomeDoRecurso;
+                    recursosComuns.numNavesComRecursosIguais++;
                     break;
                 }
             }
 
-            if (permutacao_nova) {
-                // Nova permutação encontrada
-                // Adicionando ao conjunto de permutações únicas
-                if (*contador_permutacoes < 6 * 6 * 6) {
-                    memcpy(permutacoes[*contador_permutacoes].permutacao, permutacao_atual.permutacao, sizeof(permutacao_atual.permutacao));
-                    (*contador_permutacoes)++;
-                }
+            recursosComuns.recursosComuns[recursosComuns.numRecursosComuns] = nomeDoRecurso;
+            recursosComuns.numRecursosComuns++;
 
-                navesInseridas++;
-                sleep(2);
-            }
-            /*Essa parte do código verifica se a permutação de recursos da nave atual já existe no conjunto de permutações únicas e, se não existir, a adiciona ao conjunto.
-             Isso permite rastrear permutações únicas de recursos conforme as naves são inseridas.*/
-
-            //fim
             inserir(heap, nave);
             navesInseridas++;
             sleep(2);
-        }
-    }
+                }
+            }
+
+            if (recursosComuns.numNavesComRecursosIguais > 0) {
+                printf("Expansao da passagem ocorreu para recursos comuns. \nNaves com recursos iguais:\n");
+                for (int k = 0; k < recursosComuns.numNavesComRecursosIguais; k++) {
+                    printf("Nave de id (%d) com recurso igual: %s\n", recursosComuns.navesComRecursosIguais[k], recursosComuns.nomesRecursosComuns[k]);
+                }
+            }
+
+            //Fim - Parte II
+
 
     return navesInseridas;
 }
