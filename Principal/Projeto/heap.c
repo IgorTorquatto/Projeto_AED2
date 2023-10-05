@@ -191,8 +191,9 @@ int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap){
             }
 
             if (recursosComuns.numNavesComRecursosIguais > 0) {
-                printf("Expansao da passagem ocorreu para recursos comuns. \nNaves com recursos iguais:\n");
+                printf("Expansao da passagem vai ocorrer para recursos comuns. \nNaves com recursos iguais:\n");
                 for (int k = 0; k < recursosComuns.numNavesComRecursosIguais; k++) {
+                    if (k == 0) continue; // isso está aqui para consertar um bug
                     printf("Nave de id (%d) com recurso igual: %s\n", recursosComuns.navesComRecursosIguais[k], recursosComuns.nomesRecursosComuns[k]);
                 }
             }
