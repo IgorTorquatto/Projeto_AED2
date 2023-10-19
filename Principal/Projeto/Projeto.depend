@@ -103,3 +103,33 @@
 	<string.h>
 	"naveEspacial.h"
 
+1697757339 source:c:\users\softex\documents\projeto_aed2\principal\projeto\heap.c
+	"heap.h"
+	"naveEspacial.h"
+	<stdio.h>
+	<unistd.h>
+	<stdlib.h>
+	<string.h>
+
+1697752380 c:\users\softex\documents\projeto_aed2\principal\projeto\heap.h
+	<stdio.h>
+	<unistd.h>
+	<stdlib.h>
+	<string.h>
+	"naveEspacial.h"
+
+1697758068 c:\users\softex\documents\projeto_aed2\principal\projeto\naveespacial.h
+
+1697752380 source:c:\users\softex\documents\projeto_aed2\principal\projeto\main.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	"naveEspacial.h"
+	"heap.h"
+
+1697752380 source:c:\users\softex\documents\projeto_aed2\principal\projeto\naveespacial.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"naveEspacial.h"
+

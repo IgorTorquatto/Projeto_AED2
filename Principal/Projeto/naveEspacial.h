@@ -17,18 +17,6 @@ typedef struct {
     int quantidade;
 } Recurso;
 
-//Começo - Parte II
-//Estrutura de dados para rastrear as naves que transportam os mesmos recursos:
-typedef struct {
-    char* recursosComuns[MAX_RECURSOS];
-    char* nomesRecursosComuns[MAX_NAVES];
-    int numRecursosComuns;
-    int navesComRecursosIguais[MAX_NAVES];
-    int numNavesComRecursosIguais;
-} RecursosIguais;
-// Fim - Parte II
-
-// Definição da estrutura da nave espacial
 typedef struct NaveEspacial {
     int id;
     int prioridade;

@@ -126,81 +126,63 @@ void constroiHeap(Heap *heap) {
     }
 }
 
-
-int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap){
+int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
     int navesInseridas = 0;
-    char* nomesRecursos[NUM_RECURSOS] = {"Agua", "Gasolina", "Comida","Remedios", "Armas","Roupa"};  //6 itens conforme a descrição do trabalho
-    char linha[256]; // Tamanho suficiente para armazenar uma linha
-
-    //Começo - Parte II
-    RecursosIguais recursosComuns;
-    recursosComuns.numRecursosComuns = 0;
-    recursosComuns.numNavesComRecursosIguais = 0;
-    //Fim - Parte II
+    char* nomesRecursos[NUM_RECURSOS] = {"Agua", "Gasolina", "Comida", "Remedios", "Armas", "Roupa"};
+    char linha[256];
 
     while (fgets(linha, sizeof(linha), arquivo) != NULL) {
         int id, prioridade, idade, identificadorUnico, num_passageiros;
         char nome[50], planetaOrigem[50];
 
         if (sscanf(linha, "%d,%d,%49[^,],%d,%49[^,],%d", &id, &prioridade, nome, &idade, planetaOrigem, &identificadorUnico) == 6) {
-
             Passageiro piloto[1];
             piloto[0].idade = idade;
             strcpy(piloto[0].nome, nome);
             strcpy(piloto[0].planetaOrigem, planetaOrigem);
             piloto[0].identificadorUnico = identificadorUnico;
 
-            // Qtd passageiros
             num_passageiros = rand() % 101;
 
-            // Qtd Recursos
-            Recurso recursos[1];
             int numRecursos = rand() % 101;
-            recursos[0].quantidade = numRecursos;
+            Recurso recursos[numRecursos];
 
-            // Nome do Recurso
-            int num_aleatorio = rand() % 6;
-            char nomeDoRecurso[50];
-            strcpy(nomeDoRecurso, nomesRecursos[num_aleatorio]);
-            strcpy(recursos[0].nomeRecurso, nomeDoRecurso);
+            int maxQuantidade = 0; // Variável para rastrear a maior quantidade de recurso
+            char nomeRecursoMaisQuantidade[50]; // Variável para rastrear o nome do recurso com a maior quantidade
 
-            NaveEspacial nave = {id, prioridade, piloto, num_passageiros, recursos, numRecursos, verificarDadosNave};
+            for (int i = 0; i < numRecursos; i++) {
+                int num_aleatorio = rand() % 6;
+                strcpy(recursos[i].nomeRecurso, nomesRecursos[num_aleatorio]);
+                recursos[i].quantidade = 1;
 
-            printf("Nave de id (%d) transportando: %s \n",id,nave.recursos->nomeRecurso);
-            printf("Piloto da nave de id (%d): %s do planeta %s \n\n",id,nave.passageiros->nome,nave.passageiros->planetaOrigem);
-
-
-            //Começo - Parte II
-            // Verifique se esta nave transporta recursos comuns com outras naves
-            for (int j = 0; j < recursosComuns.numRecursosComuns; j++) {
-                if (strcmp(nomeDoRecurso, recursosComuns.recursosComuns[j]) == 0) {
-                    recursosComuns.navesComRecursosIguais[recursosComuns.numNavesComRecursosIguais] = id;
-                    recursosComuns.nomesRecursosComuns[recursosComuns.numNavesComRecursosIguais] = nomeDoRecurso;
-                    recursosComuns.numNavesComRecursosIguais++;
-                    break;
+                // Verificar se a quantidade atual é maior que a quantidade máxima
+                if (recursos[i].quantidade > maxQuantidade) {
+                    maxQuantidade = recursos[i].quantidade;
+                    strcpy(nomeRecursoMaisQuantidade, recursos[i].nomeRecurso);
                 }
             }
 
-            recursosComuns.recursosComuns[recursosComuns.numRecursosComuns] = nomeDoRecurso;
-            recursosComuns.numRecursosComuns++;
+            int quantidadeTotalRecursos = 0;
+            for (int i = 0; i < numRecursos; i++) {
+                quantidadeTotalRecursos += recursos[i].quantidade;
+            }
+
+            NaveEspacial nave = {id, prioridade, piloto, num_passageiros, recursos, numRecursos, verificarDadosNave};
+
+            printf("Nave de id (%d) transportando:\n", id);
+            for (int i = 0; i < numRecursos; i++) {
+                printf("(%s)", nave.recursos[i].nomeRecurso, nave.recursos[i].quantidade);
+            }
+            sleep(2);
+            printf("\n\nQuantidade total de recursos: %d\n", quantidadeTotalRecursos);
+            printf("Nome do recurso com a maior quantidade: %s\n", nomeRecursoMaisQuantidade);
+            printf("Piloto da nave de id (%d): %s do planeta %s\n\n", id, nave.passageiros->nome, nave.passageiros->planetaOrigem);
 
             inserir(heap, nave);
             navesInseridas++;
             sleep(2);
-                }
-            }
-
-            if (recursosComuns.numNavesComRecursosIguais > 0) {
-                printf("Expansao da passagem vai ocorrer para recursos comuns. \nNaves com recursos iguais:\n");
-                for (int k = 0; k < recursosComuns.numNavesComRecursosIguais; k++) {
-                    if (k == 0) continue; // isso está aqui para consertar um bug
-                    printf("Nave de id (%d) com recurso igual: %s\n", recursosComuns.navesComRecursosIguais[k], recursosComuns.nomesRecursosComuns[k]);
-                }
-            }
-
-            //Fim - Parte II
-
+        }
+    }
 
     return navesInseridas;
 }
-
