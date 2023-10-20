@@ -12,7 +12,17 @@ typedef struct {
 } Passageiro;
 
 //Definição da estrutura dos recursos transportados
+enum RecursoID {
+    AGUA = 0,
+    GASOLINA = 1,
+    COMIDA = 2,
+    REMEDIOS = 3,
+    ARMAS = 4,
+    ROUPA = 5
+};
+
 typedef struct {
+    int recursoID;
     char nomeRecurso[50];
     int quantidade;
 } Recurso;

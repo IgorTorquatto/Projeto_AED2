@@ -17,6 +17,8 @@ int main() {
     }
 
     // Leitura e inserção das naves a partir do arquivo na heap criada
+    printf("Recursos das naves: \n");
+    sleep(2);
     int navesInseridas = inserirTodasNavesDoArquivo(arquivo, heap);
     fclose(arquivo);
 

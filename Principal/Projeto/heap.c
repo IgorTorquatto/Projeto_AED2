@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #define NUM_RECURSOS 6
 
 // Função para criar uma nova heap
@@ -126,10 +127,91 @@ void constroiHeap(Heap *heap) {
     }
 }
 
+//Parte 2
+bool next_permutation(int *arr, int n) {
+    int i = n - 2;
+
+    while (i >= 0 && arr[i] >= arr[i + 1]) {
+        i--;
+    }
+
+    if (i < 0) {
+        return false;
+    }
+
+    int j = n - 1;
+
+    while (arr[j] <= arr[i]) {
+        j--;
+    }
+
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+
+    j = n - 1;
+    i++;
+
+    while (i < j) {
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        i++;
+        j--;
+    }
+
+    return true;
+}
+
+void analisarRecursosIguais(NaveEspacial *naves, int numNaves) {
+    int combinacoesIguais = 0;
+
+    for (int i = 0; i < numNaves - 2; i++) {
+        for (int j = i + 1; j < numNaves - 1; j++) {
+            for (int k = j + 1; k < numNaves; k++) {
+                bool compartimentosIguais = true;
+
+                for (int compartimento = 0; compartimento < 4; compartimento++) {
+                    int compartimento1 = compartimento;
+                    int compartimento2 = compartimento;
+                    int compartimento3 = compartimento;
+                    int compartimento4 = compartimento;
+
+                    if (naves[i].recursos[compartimento1].recursoID != naves[j].recursos[compartimento2].recursoID ||
+                        naves[i].recursos[compartimento1].recursoID != naves[k].recursos[compartimento3].recursoID ||
+                        naves[j].recursos[compartimento2].recursoID != naves[k].recursos[compartimento4].recursoID) {
+                        compartimentosIguais = false;
+                        break;
+                    }
+                }
+
+                if (compartimentosIguais) {
+                    combinacoesIguais++;
+                    break;  // Se encontrou uma combinação igual, não precisa continuar verificando as permutações
+                }
+            }
+        }
+    }
+
+    if (combinacoesIguais > 0) {
+        printf("Vai haver expansao!\n");
+    } else {
+        printf("Não há expansao iminente.\n");
+    }
+}
+
+
+
+//
+
 int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
     int navesInseridas = 0;
-    char* nomesRecursos[NUM_RECURSOS] = {"Agua", "Gasolina", "Comida", "Remedios", "Armas", "Roupa"};
+    const char* nomesRecursos[] = {"Agua","Gasolina","Comida","Remedios","Armas","Roupa"};
     char linha[256];
+
+    //Parte 2
+    NaveEspacial naves[100];
+    int numNaves = 0;
 
     while (fgets(linha, sizeof(linha), arquivo) != NULL) {
         int id, prioridade, idade, identificadorUnico, num_passageiros;
@@ -148,17 +230,17 @@ int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
             Recurso recursos[numRecursos];
 
             int maxQuantidade = 0; // Variável para rastrear a maior quantidade de recurso
-            char nomeRecursoMaisQuantidade[50]; // Variável para rastrear o nome do recurso com a maior quantidade
+            int recursoMaisQuantidade = -1; // Variável para rastrear o recurso com a maior quantidade
 
             for (int i = 0; i < numRecursos; i++) {
-                int num_aleatorio = rand() % 6;
-                strcpy(recursos[i].nomeRecurso, nomesRecursos[num_aleatorio]);
+                int num_aleatorio = rand() % NUM_RECURSOS; // Gera um identificador numérico aleatório
+                recursos[i].recursoID = num_aleatorio;
                 recursos[i].quantidade = 1;
 
                 // Verificar se a quantidade atual é maior que a quantidade máxima
                 if (recursos[i].quantidade > maxQuantidade) {
                     maxQuantidade = recursos[i].quantidade;
-                    strcpy(nomeRecursoMaisQuantidade, recursos[i].nomeRecurso);
+                    recursoMaisQuantidade = num_aleatorio;
                 }
             }
 
@@ -169,20 +251,43 @@ int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
 
             NaveEspacial nave = {id, prioridade, piloto, num_passageiros, recursos, numRecursos, verificarDadosNave};
 
+            // Calcular a quantidade média por compartimento
+            int quantidadeMediaPorCompartimento = quantidadeTotalRecursos / 4;
+
             printf("Nave de id (%d) transportando:\n", id);
             for (int i = 0; i < numRecursos; i++) {
-                printf("(%s)", nave.recursos[i].nomeRecurso, nave.recursos[i].quantidade);
+                // Distribuir a quantidade média nos compartimentos
+                int quantidadePorCompartimento = quantidadeMediaPorCompartimento;
+                if (i < numRecursos % 4) {
+                    quantidadePorCompartimento++;
+                }
+
+                printf("(Recurso %d)", recursos[i].recursoID);
             }
             sleep(2);
-            printf("\n\nQuantidade total de recursos: %d\n", quantidadeTotalRecursos);
-            printf("Nome do recurso com a maior quantidade: %s\n", nomeRecursoMaisQuantidade);
+
+            printf("\n");
+
+            for(int i = 0; i < 4; i++){
+               printf("\nCompartimento %d transportando aproximadamente %d itens \n", i+1, quantidadeMediaPorCompartimento);
+            }
+
+            sleep(2);
+            printf("\nQuantidade total de recursos: %d\n", quantidadeTotalRecursos);
+            printf("Identificador do recurso com a maior quantidade: %d\n", recursoMaisQuantidade);
+            printf("Nome do recurso com a maior quantidade: %s\n", nomesRecursos[recursoMaisQuantidade]);
             printf("Piloto da nave de id (%d): %s do planeta %s\n\n", id, nave.passageiros->nome, nave.passageiros->planetaOrigem);
 
             inserir(heap, nave);
+            // Armazene a nave no array
+            naves[numNaves] = nave;
+            numNaves++;
+
             navesInseridas++;
             sleep(2);
         }
     }
-
+    // Verificar se recursos são iguais em combinações de 3 naves
+    analisarRecursosIguais(naves, numNaves);
     return navesInseridas;
 }
