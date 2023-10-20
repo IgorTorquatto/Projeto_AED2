@@ -129,80 +129,80 @@ void constroiHeap(Heap *heap) {
 
 //Parte 2
 bool next_permutation(int *arr, int n) {
-    int i = n - 2;
+    int i = n - 2;  // Inicializa o índice 'i' para a penúltima posição do array.
 
     while (i >= 0 && arr[i] >= arr[i + 1]) {
-        i--;
+        i--;  // Enquanto o elemento atual for maior ou igual ao próximo elemento, continue retrocedendo no array.
     }
 
     if (i < 0) {
-        return false;
+        return false;  // Se não for possível encontrar uma permutação maior, retorne 'false'.
     }
 
-    int j = n - 1;
+    int j = n - 1;  // Inicializa o índice 'j' na última posição do array.
 
     while (arr[j] <= arr[i]) {
-        j--;
+        j--;  // Enquanto o elemento na posição 'j' for menor ou igual ao elemento em 'i', continue retrocedendo em 'j'.
     }
 
-    int temp = arr[i];
+    int temp = arr[i];  // Troque o elemento na posição 'i' com o elemento na posição 'j'.
     arr[i] = arr[j];
     arr[j] = temp;
 
-    j = n - 1;
-    i++;
+    j = n - 1;  // Reinicializa 'j'.
+    i++;  // Incrementa 'i'.
 
     while (i < j) {
-        temp = arr[i];
+        temp = arr[i];  // Inverte os elementos no intervalo entre 'i' e 'j'.
         arr[i] = arr[j];
         arr[j] = temp;
         i++;
         j--;
     }
 
-    return true;
+    return true;  // Retorne 'true' para indicar que a próxima permutação foi encontrada com sucesso.
 }
 
+
 void analisarRecursosIguais(NaveEspacial *naves, int numNaves) {
-    int combinacoesIguais = 0;
+    int combinacoesIguais = 0;  // Inicializa a contagem de combinações iguais.
 
     for (int i = 0; i < numNaves - 2; i++) {
         for (int j = i + 1; j < numNaves - 1; j++) {
             for (int k = j + 1; k < numNaves; k++) {
-                bool compartimentosIguais = true;
+                bool compartimentosIguais = true;  // Inicializa uma variável para rastrear se todos os compartimentos são iguais.
 
                 for (int compartimento = 0; compartimento < 4; compartimento++) {
-                    int compartimento1 = compartimento;
-                    int compartimento2 = compartimento;
-                    int compartimento3 = compartimento;
-                    int compartimento4 = compartimento;
+                    int compartimento1 = compartimento;  // Associa o compartimento atual a 'compartimento1'.
+                    int compartimento2 = compartimento;  // Associa o compartimento atual a 'compartimento2'.
+                    int compartimento3 = compartimento;  // Associa o compartimento atual a 'compartimento3'.
+                    int compartimento4 = compartimento;  // Associa o compartimento atual a 'compartimento4'.
 
+                    // Verifica se os recursos dos compartimentos nas naves 'i', 'j' e 'k' são iguais.
                     if (naves[i].recursos[compartimento1].recursoID != naves[j].recursos[compartimento2].recursoID ||
                         naves[i].recursos[compartimento1].recursoID != naves[k].recursos[compartimento3].recursoID ||
                         naves[j].recursos[compartimento2].recursoID != naves[k].recursos[compartimento4].recursoID) {
-                        compartimentosIguais = false;
-                        break;
+                        compartimentosIguais = false;  // Se algum compartimento não for igual, defina 'compartimentosIguais' como falso.
+                        break;  // Saia do loop, pois não é mais necessário verificar os compartimentos.
                     }
                 }
 
                 if (compartimentosIguais) {
-                    combinacoesIguais++;
-                    break;  // Se encontrou uma combinação igual, não precisa continuar verificando as permutações
+                    combinacoesIguais++;  // Se todos os compartimentos forem iguais, incrementa a contagem de combinações iguais.
+                    break;  // Se encontrou uma combinação igual, não precisa continuar verificando as permutações.
                 }
             }
         }
     }
 
     if (combinacoesIguais > 0) {
-        printf("Vai haver expansao!\n");
+        printf("Vai haver expansao\n");  // Se pelo menos uma combinação for igual, imprima que haverá expansão.
     } else {
-        printf("Não há expansao iminente.\n");
+        printf("Nao ha expansao iminente.\n");  // Se não houver combinações iguais, imprima que não há expansão iminente.
     }
 }
 
-
-
-//
+// fim parte 2
 
 int inserirTodasNavesDoArquivo(FILE *arquivo, Heap *heap) {
     int navesInseridas = 0;

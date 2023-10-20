@@ -103,7 +103,7 @@
 	<string.h>
 	"naveEspacial.h"
 
-1697814599 source:c:\users\softex\documents\projeto_aed2\principal\projeto\heap.c
+1697834552 source:c:\users\softex\documents\projeto_aed2\principal\projeto\heap.c
 	"heap.h"
 	"naveEspacial.h"
 	<stdio.h>
@@ -112,7 +112,7 @@
 	<string.h>
 	<stdbool.h>
 
-1697816120 c:\users\softex\documents\projeto_aed2\principal\projeto\heap.h
+1697833805 c:\users\softex\documents\projeto_aed2\principal\projeto\heap.h
 	<stdio.h>
 	<unistd.h>
 	<stdlib.h>
@@ -120,16 +120,16 @@
 	<stdbool.h>
 	"naveEspacial.h"
 
-1697828700 c:\users\softex\documents\projeto_aed2\principal\projeto\naveespacial.h
+1697833805 c:\users\softex\documents\projeto_aed2\principal\projeto\naveespacial.h
 
-1697815011 source:c:\users\softex\documents\projeto_aed2\principal\projeto\main.c
+1697833805 source:c:\users\softex\documents\projeto_aed2\principal\projeto\main.c
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
 	"naveEspacial.h"
 	"heap.h"
 
-1697752380 source:c:\users\softex\documents\projeto_aed2\principal\projeto\naveespacial.c
+1697834522 source:c:\users\softex\documents\projeto_aed2\principal\projeto\naveespacial.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
